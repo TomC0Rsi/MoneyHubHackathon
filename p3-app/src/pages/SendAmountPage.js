@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import React from 'react';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMoneyhub } from '../hooks/useMoneyhub';
 
 const InputField = styled.input`
@@ -19,18 +19,18 @@ export const SendAmountPage = () => {
   const [sendAmmount, setSendAmount] = useState('');
   const [reference, setReference] = useState('');
   const { dispatch } = useMoneyhub();
-  //const { navigate } = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     // submit data to context and route to new page
-    dispatch({
-      type: 'SEND_AMOUNT',
-      payload: {
-        sendAmmount: sendAmmount,
-        reference: reference,
-      },
-    });
-    //navigate('/confirm-send');
+    // dispatch({
+    //   type: 'SEND_AMOUNT',
+    //   payload: {
+    //     sendAmmount: sendAmmount,
+    //     reference: reference,
+    //   },
+    // });
+    navigate('/receive');
     console.log('submitted', sendAmmount, reference);
   };
 
@@ -42,6 +42,7 @@ export const SendAmountPage = () => {
           <InputField
             value={sendAmmount}
             onChange={(e) => {
+              e.stopPropagation();
               setSendAmount(e.target.value);
             }}
           ></InputField>
@@ -51,11 +52,19 @@ export const SendAmountPage = () => {
           <InputField
             value={reference}
             onChange={(e) => {
+              e.stopPropagation();
               setReference(e.target.value);
             }}
           ></InputField>
         </div>
-        <StyledButton type='submit'>Submit</StyledButton>
+        <StyledButton
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          type='submit'
+        >
+          Submit
+        </StyledButton>
       </form>
     </>
   );

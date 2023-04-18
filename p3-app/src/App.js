@@ -9,19 +9,17 @@ import { AccountsPage } from './pages/AccountsPage';
 
 import AccountReceivePage from './pages/AccountReceivePage';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <MoneyHubProvider userConfig={config}>
-      <div className="App">
-        <header className="App-header">
-          <SendReceivePage />
-          <AccountReceivePage />
-          <SendAmountPage />
-          <ConfirmPage />
-          <AccountsPage />
-        </header>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='receive' element={<AccountReceivePage />} />
+          <Route path='send-amount' element={<SendAmountPage />} />
+        </Routes>
+      </BrowserRouter>
     </MoneyHubProvider>
   );
 }
