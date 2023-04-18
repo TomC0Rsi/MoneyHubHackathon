@@ -1,7 +1,8 @@
+import { Buffer } from 'buffer';
 import QRCode from 'qrcode';
 import React, { useEffect, useState } from 'react';
 
-export const QRCodeImage = async ({
+export const QRCodeImage = ({
   data
 }) => {
   const [qrcodePng, setQrcodePng] = useState('');
@@ -12,13 +13,13 @@ export const QRCodeImage = async ({
       type: 'svg'
     }, (err, pngString) => {
       if (err) throw err;
-      console.log('png data: ', pngString);
       setQrcodePng(pngString);
     });
   }, []);
 
+  const base64QrCodePng = Buffer.from(qrcodePng).toString('base64');
   return (
-    <img src={qrcodePng} alt="QR Code"/>
+    <img src={`data:image/svg+xml;base64,${base64QrCodePng}`} alt="QR Code"/>
   );
 }
   
