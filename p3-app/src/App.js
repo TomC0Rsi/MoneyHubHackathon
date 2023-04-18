@@ -4,7 +4,11 @@ import { MoneyHubProvider } from './hooks/MoneyhubProvider';
 import { config } from './config';
 import SendReceivePage from './pages/SendReceivePage';
 import { ConfirmPage } from './pages/ConfirmPage';
+
+import { AccountsPage } from './pages/AccountsPage';
+
 import AccountReceivePage from './pages/AccountReceivePage';
+
 
 function App() {
   return (
@@ -15,6 +19,7 @@ function App() {
           <AccountReceivePage />
           <SendAmountPage />
           <ConfirmPage />
+          <AccountsPage />
         </header>
       </div>
     </MoneyHubProvider>
