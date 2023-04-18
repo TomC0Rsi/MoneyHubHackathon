@@ -7,6 +7,10 @@ export const QRCodeImage = ({
 }) => {
   const [qrcodePng, setQrcodePng] = useState('');
 
+  if(!data) {
+    data = "mock data"
+  }
+
   useEffect(() => {
     QRCode.toString(data, {
       errorCorrectionLevel: 'H',
