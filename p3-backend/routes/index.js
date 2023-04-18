@@ -19,4 +19,20 @@ router.get('/accounts', async (req, res) => {
     }
 })
 
+router.get('/get-payment-url', async (req, res) => {
+    const MoneyHubClient = await Moneyhub(config);
+    try{
+        res.send(await MoneyHubClient.getPaymentAuthorizeUrl(
+            {
+                bankId: req.body.bankId, // required
+                payee: req.body.payee,
+                amount: req.body.amount,
+                payeeRef: req.body.payeeRef,
+                payerRef: req.body.payerRef
+            }));
+    } catch (err) {
+        console.error(err);
+    }
+});
+
 module.exports = router;
