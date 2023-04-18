@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import React from 'react';
+//import { useNavigate } from 'react-router-dom';
+import { useMoneyhub } from '../hooks/useMoneyhub';
 
 const InputField = styled.input`
   width: 300px;
@@ -16,9 +18,19 @@ const StyledButton = styled.button``;
 export const SendAmountPage = () => {
   const [sendAmmount, setSendAmount] = useState('');
   const [reference, setReference] = useState('');
+  const { dispatch } = useMoneyhub();
+  //const { navigate } = useNavigate();
 
   const handleSubmit = () => {
     // submit data to context and route to new page
+    dispatch({
+      type: 'SEND_AMOUNT',
+      payload: {
+        sendAmmount: sendAmmount,
+        reference: reference,
+      },
+    });
+    //navigate('/confirm-send');
     console.log('submitted', sendAmmount, reference);
   };
 
