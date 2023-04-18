@@ -1,16 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 import { SendAmountPage } from './pages/SendAmountPage';
-import { QRCodeImage } from './components/QRCode';
 import { MoneyHubProvider } from './hooks/MoneyhubProvider';
 import { config } from './config';
+import SendReceivePage from './pages/SendReceivePage';
 
 function App() {
   return (
     <MoneyHubProvider userConfig={config}>
       <div className='App'>
         <header className='App-header'>
-          <QRCodeImage data="{ data }" />
+          <SendReceivePage />
+          <SendAmountPage />
         </header>
       </div>
     </MoneyHubProvider>
