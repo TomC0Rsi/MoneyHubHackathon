@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledButton = styled.button`
   background-color: light-grey;
@@ -10,26 +10,21 @@ const StyledButton = styled.button`
   padding: 1rem 4rem;
 `;
 
-const Button = ({children}) => {
+const Button = ({ children }) => {
+  const handleClick = () => {
+    return;
+  };
 
-    const handleClick = () => {
-      return 
-    }
-
-    return (
-        <StyledButton onClick={handleClick}>
-                  {children}
-        </StyledButton>
-    )
-}
+  return <StyledButton onClick={handleClick}>{children}</StyledButton>;
+};
 
 const SendReceivePage = () => {
-    return (
+  return (
     <>
-    <Button> Send </Button>
-    <Button> Receive </Button>
+      <Button> Send </Button>
+      <Button> Receive </Button>
     </>
-    )
-}
+  );
+};
 
-export default SendReceivePage
+export default SendReceivePage;
